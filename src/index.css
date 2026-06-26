@@ -1,0 +1,35 @@
+:root {
+  --bg-color: #070714;
+  --text-color: #f1f5f9;
+  --text-muted: #94a3b8;
+  --color-primary: #7c3aed;
+  --color-primary-light: #a855f7;
+  --card-bg: rgba(124, 58, 237, 0.05);
+  --card-border: rgba(168, 85, 247, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #ffffff;
+}
