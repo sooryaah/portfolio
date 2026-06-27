@@ -91,6 +91,7 @@ body{
     display:flex;
     list-style:none;
     gap:40px;
+    margin: 0 auto;
 }
 
 .nav-links li a{

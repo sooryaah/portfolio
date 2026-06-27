@@ -1,0 +1,188 @@
+.orbital-system {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  margin: 0 auto;
+}
+
+.orbital-core {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: pulse-core 4s ease-in-out infinite;
+}
+
+.core-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.8) 0%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.core-inner {
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(168, 85, 247, 0.3);
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ring-1 {
+  width: 200px;
+  height: 200px;
+  animation: spin 15s linear infinite;
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.ring-2 {
+  width: 320px;
+  height: 320px;
+  animation: spin-reverse 25s linear infinite;
+}
+
+.ring-3 {
+  width: 450px;
+  height: 450px;
+  animation: spin 40s linear infinite;
+  border: 1px dashed rgba(168, 85, 247, 0.15);
+}
+
+.planet {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  /* Counter-rotate to keep icons upright */
+}
+
+.ring-1 .planet { animation: counter-spin 15s linear infinite; }
+.ring-2 .planet { animation: counter-spin-reverse 25s linear infinite; }
+.ring-3 .planet { animation: counter-spin 40s linear infinite; }
+
+/* Positions */
+.p-react { top: -22px; color: #61dafb; border-color: rgba(97, 218, 251, 0.5); box-shadow: 0 0 15px rgba(97, 218, 251, 0.3); }
+.p-js { bottom: -22px; color: #f7df1e; border-color: rgba(247, 223, 30, 0.5); box-shadow: 0 0 15px rgba(247, 223, 30, 0.3); }
+
+.p-python { left: -22px; color: #3776ab; border-color: rgba(55, 118, 171, 0.5); box-shadow: 0 0 15px rgba(55, 118, 171, 0.3); }
+.p-node { right: -22px; color: #339933; border-color: rgba(51, 153, 51, 0.5); box-shadow: 0 0 15px rgba(51, 153, 51, 0.3); }
+
+.p-db { top: 60px; right: 15px; color: #336791; border-color: rgba(51, 103, 145, 0.5); }
+.p-git { bottom: 30px; left: 45px; color: #f05032; border-color: rgba(240, 80, 50, 0.5); }
+.p-docker { top: 10px; left: 100px; color: #2496ed; border-color: rgba(36, 150, 237, 0.5); }
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes counter-spin {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes counter-spin-reverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-core {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(124, 58, 237, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 50px rgba(124, 58, 237, 0.8), inset 0 0 25px rgba(255, 255, 255, 0.6); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 0.4; }
+}
+
+/* Space Dust Particles */
+.space-dust {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0;
+}
+
+.dust-1 {
+  width: 4px;
+  height: 4px;
+  top: 20%;
+  left: 20%;
+  box-shadow: 0 0 10px #fff;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.dust-2 {
+  width: 3px;
+  height: 3px;
+  top: 80%;
+  right: 15%;
+  box-shadow: 0 0 8px #a855f7;
+  background: #d8b4fe;
+  animation: twinkle 4s ease-in-out infinite 1s;
+}
+
+.dust-3 {
+  width: 5px;
+  height: 5px;
+  bottom: 25%;
+  left: 30%;
+  box-shadow: 0 0 12px #38bdf8;
+  background: #7dd3fc;
+  animation: twinkle 5s ease-in-out infinite 2s;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .orbital-system {
+    transform: scale(0.6);
+  }
+}
+@media (min-width: 601px) and (max-width: 980px) {
+  .orbital-system {
+    transform: scale(0.8);
+  }
+}

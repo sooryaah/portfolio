@@ -35,9 +35,7 @@ function Navbar() {
         style={{ width: `${scrollProgress}%` }}
       ></div>
 
-      <a href="#home" className="logo" onClick={() => setMenuOpen(false)}>
-        Soorya<span className="logo-dot">.</span>
-      </a>
+
 
       <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
         {navItems.map((item) => (

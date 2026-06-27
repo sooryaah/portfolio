@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import TiltCard from "./TiltCard";
 import NodeNetwork from "./NodeNetwork";
-import heroPng from "../assets/profile.jpg";
+import OrbitalSystem from "./OrbitalSystem";
 import "../styles/Home.css";
 
 function Home() {
@@ -50,28 +49,11 @@ function Home() {
         </div>
 
         <div className="hero-right">
-          <div className="portrait-wrapper">
-            <TiltCard className="portrait-card">
-              <div className="portrait-glow-ring"></div>
-              <img
-                src={heroPng}
-                alt="Soorya K R"
-                className="portrait-photo"
-              />
-            </TiltCard>
-            {/* Badges outside the card so they aren't clipped by overflow:hidden */}
-            <div className="badge badge-exp">
-              <span className="badge-num">2+</span>
-              <span className="badge-text">Years<br />Experience</span>
-            </div>
-            <div className="badge badge-code">
-              <span>&lt;/&gt;</span>
-            </div>
-          </div>
+          <OrbitalSystem />
         </div>
       </div>
     </header>
   );
 }
 
-export default Home;
+export default Home;
