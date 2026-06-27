@@ -19,7 +19,7 @@ body{
     top:0;
     left:0;
     width:100%;
-    padding:20px 80px;
+    padding: clamp(15px, 2.5vw, 20px) clamp(16px, 5vw, 80px);
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -32,13 +32,37 @@ body{
     transition: all 0.4s ease;
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 12px 12px;
+    }
+}
+
 .navbar.scrolled {
     background:rgba(15,23,42,0.8);
     backdrop-filter:blur(24px);
     -webkit-backdrop-filter:blur(24px);
     box-shadow:0 8px 32px rgba(0,0,0,0.4);
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 15px 80px;
+    padding: clamp(12px, 2vw, 15px) clamp(16px, 5vw, 80px);
+}
+
+@media (max-width: 768px) {
+    .navbar.scrolled {
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar.scrolled {
+        padding: 10px 12px;
+    }
 }
 
 .navbar:hover {
@@ -58,7 +82,7 @@ body{
 
 /* Logo */
 .logo{
-    font-size:22px;
+    font-size: clamp(16px, 4vw, 22px);
     font-weight:700;
     color:#fff;
     text-decoration:none;
@@ -67,6 +91,12 @@ body{
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 16px;
+    }
 }
 
 .logo:hover {
@@ -90,17 +120,41 @@ body{
 .nav-links{
     display:flex;
     list-style:none;
-    gap:40px;
+    gap: clamp(24px, 4vw, 40px);
     margin: 0 auto;
+}
+
+@media (max-width: 880px) {
+    .nav-links {
+        gap: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 24px;
+    }
 }
 
 .nav-links li a{
     text-decoration:none;
     color:#cbd5e1;
-    font-size:15px;
+    font-size: clamp(13px, 2.5vw, 15px);
     font-weight:500;
     transition: all .3s ease;
     position:relative;
+}
+
+@media (max-width: 768px) {
+    .nav-links li a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links li a {
+        font-size: 13px;
+    }
 }
 
 .nav-links li a::after{
@@ -129,14 +183,21 @@ body{
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
-    width: 40px;
-    height: 40px;
+    width: clamp(32px, 8vw, 40px);
+    height: clamp(32px, 8vw, 40px);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .theme-toggle {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 .theme-toggle:hover {
@@ -205,34 +266,60 @@ body{
 }
 
 /* Responsive nav */
-@media (max-width:880px){
-    .navbar{
-        padding:18px 24px;
+@media (max-width: 880px) {
+    .navbar {
+        padding: clamp(12px, 2.5vw, 18px) clamp(12px, 4vw, 24px);
     }
-    .nav-links{
-        position:fixed;
-        top:0;
-        right:-280px;
-        height:100vh;
-        width:260px;
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -280px;
+        height: 100vh;
+        width: 260px;
         background: linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(15,23,42,0.95) 100%);
         backdrop-filter: blur(16px);
-        flex-direction:column;
-        justify-content:center;
-        align-items:flex-start;
-        gap:28px;
-        padding:0 40px;
-        box-shadow:-10px 0 30px rgba(0,0,0,.4);
-        transition:right .35s ease;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 0 40px;
+        box-shadow: -10px 0 30px rgba(0,0,0,.4);
+        transition: right .35s ease;
         border-right: 1px solid rgba(56,189,248,0.1);
     }
-    .nav-links.active{
-        right:0;
+
+    .nav-links.active {
+        right: 0;
     }
-    .hire-btn{
-        display:none;
+
+    .hire-btn {
+        display: none;
     }
-    .menu-toggle{
-        display:flex;
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 12px;
+    }
+
+    .nav-links {
+        width: 100%;
+        right: -100%;
+        padding: 0 24px;
+        gap: 20px;
+    }
+
+    .menu-toggle {
+        width: 24px;
+        height: 16px;
+    }
+
+    .menu-toggle span {
+        height: 2px;
     }
 }

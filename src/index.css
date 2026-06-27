@@ -16,6 +16,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: clamp(14px, 2vw, 16px);
 }
 
 body {
@@ -23,6 +24,27 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   overflow-x: hidden;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+  
+  body {
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    line-height: 1.4;
+  }
 }
 
 a {

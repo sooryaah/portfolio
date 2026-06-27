@@ -35,18 +35,21 @@ function Projects() {
       description:
         "Decentralized rental marketplace built with Django and blockchain technology. Implemented distributed ledger for immutable transaction recording, eliminating fraud risk and providing full audit transparency for property rental transactions.",
       tech: "Python, Django, Blockchain, PostgreSQL",
+      image: new URL("../assets/blockchain-project.svg", import.meta.url).href,
     },
     {
       title: "Personal Finance Tracker",
       description:
         "Full-stack financial management application with multi-category expense tracking, dynamic chart-based reporting, budget forecasting, and role-based authentication. Helps users gain insights into spending behavior with visual analytics.",
       tech: "Python, Django, Chart.js, SQLite",
+      image: new URL("../assets/finance-tracker.svg", import.meta.url).href,
     },
     {
       title: "Multi-Role Job Portal",
       description:
         "Three-tier recruitment platform (Admin, Employer, Job Seeker) with role-specific dashboards, access controls, job posting workflows, application tracking, and candidate filtering mirroring enterprise HR systems.",
       tech: "Python, Django, Bootstrap, PostgreSQL",
+      image: new URL("../assets/job-portal.svg", import.meta.url).href,
     },
   ];
 
@@ -79,13 +82,23 @@ function Projects() {
         >
           {projects.map((project, idx) => (
             <motion.div key={project.title} variants={cardVariants}>
-              <TiltCard className="project-card">
-                <div className="project-icon">#{idx + 1}</div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <p style={{ marginTop: "12px", fontSize: "13px", color: "#38bdf8" }}>
-                  <strong>Stack:</strong> {project.tech}
-                </p>
+              <TiltCard 
+                className="project-card"
+                style={{
+                  backgroundImage: `url('${project.image}')`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundAttachment: "fixed",
+                }}
+              >
+                <div className="project-content">
+                  <div className="project-icon">#{idx + 1}</div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <p style={{ marginTop: "12px", fontSize: "13px", color: "#38bdf8" }}>
+                    <strong>Stack:</strong> {project.tech}
+                  </p>
+                </div>
               </TiltCard>
             </motion.div>
           ))}

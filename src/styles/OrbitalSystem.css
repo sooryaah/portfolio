@@ -1,7 +1,7 @@
 .orbital-system {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: clamp(300px, 80vw, 500px);
+  height: clamp(300px, 80vw, 500px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,10 +10,31 @@
   margin: 0 auto;
 }
 
+@media (max-width: 1200px) {
+  .orbital-system {
+    width: clamp(280px, 75vw, 420px);
+    height: clamp(280px, 75vw, 420px);
+  }
+}
+
+@media (max-width: 768px) {
+  .orbital-system {
+    width: clamp(240px, 70vw, 340px);
+    height: clamp(240px, 70vw, 340px);
+  }
+}
+
+@media (max-width: 480px) {
+  .orbital-system {
+    width: clamp(200px, 60vw, 280px);
+    height: clamp(200px, 60vw, 280px);
+  }
+}
+
 .orbital-core {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: clamp(60px, 8vw, 90px);
+  height: clamp(60px, 8vw, 90px);
   border-radius: 50%;
   background: linear-gradient(135deg, #7c3aed, #4f46e5);
   box-shadow: 0 0 30px rgba(124, 58, 237, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.4);
@@ -22,6 +43,13 @@
   align-items: center;
   z-index: 10;
   animation: pulse-core 4s ease-in-out infinite;
+}
+
+@media (max-width: 480px) {
+  .orbital-core {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .core-glow {
@@ -36,9 +64,15 @@
 }
 
 .core-inner {
-  font-size: 32px;
+  font-size: clamp(18px, 5vw, 32px);
   color: #fff;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 480px) {
+  .core-inner {
+    font-size: 18px;
+  }
 }
 
 .orbit {
@@ -52,39 +86,67 @@
 }
 
 .ring-1 {
-  width: 200px;
-  height: 200px;
+  width: clamp(120px, 25vw, 200px);
+  height: clamp(120px, 25vw, 200px);
   animation: spin 15s linear infinite;
   border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
+@media (max-width: 480px) {
+  .ring-1 {
+    width: 140px;
+    height: 140px;
+  }
+}
+
 .ring-2 {
-  width: 320px;
-  height: 320px;
+  width: clamp(200px, 40vw, 320px);
+  height: clamp(200px, 40vw, 320px);
   animation: spin-reverse 25s linear infinite;
 }
 
+@media (max-width: 480px) {
+  .ring-2 {
+    width: 230px;
+    height: 230px;
+  }
+}
+
 .ring-3 {
-  width: 450px;
-  height: 450px;
+  width: clamp(280px, 55vw, 450px);
+  height: clamp(280px, 55vw, 450px);
   animation: spin 40s linear infinite;
   border: 1px dashed rgba(168, 85, 247, 0.15);
 }
 
+@media (max-width: 480px) {
+  .ring-3 {
+    width: 320px;
+    height: 320px;
+  }
+}
+
 .planet {
   position: absolute;
-  width: 45px;
-  height: 45px;
+  width: clamp(30px, 6vw, 45px);
+  height: clamp(30px, 6vw, 45px);
   border-radius: 50%;
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(124, 58, 237, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+  font-size: clamp(14px, 4vw, 22px);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
-  /* Counter-rotate to keep icons upright */
+}
+
+@media (max-width: 480px) {
+  .planet {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 }
 
 .ring-1 .planet { animation: counter-spin 15s linear infinite; }
@@ -176,13 +238,26 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .orbital-system {
-    transform: scale(0.6);
+    transform: scale(0.9);
   }
 }
-@media (min-width: 601px) and (max-width: 980px) {
+
+@media (max-width: 768px) {
   .orbital-system {
     transform: scale(0.8);
+  }
+}
+
+@media (max-width: 600px) {
+  .orbital-system {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  .orbital-system {
+    transform: scale(0.65);
   }
 }

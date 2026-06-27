@@ -1,24 +1,31 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import TiltCard from "./TiltCard";
 import "../styles/Home.css";
 
 const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
     },
   },
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
+const categoryVariants = {
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const chipVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.4, ease: "easeOut" },
   },
 };
 
@@ -29,11 +36,31 @@ const headingVariants = {
 
 function Skills() {
   const skillCategories = [
-    { title: "Languages", skills: "Python, JavaScript, Java, C, HTML5, CSS3", level: 90 },
-    { title: "Backend & Frameworks", skills: "Django, Django REST Framework, FastAPI, React.js", level: 85 },
-    { title: "Databases", skills: "PostgreSQL, MongoDB, SQLite, SQL", level: 88 },
-    { title: "DevOps & Tools", skills: "Docker, Linux, Git, GitHub, GitHub Actions", level: 82 },
-    { title: "Specializations", skills: "REST API Design, ERP Integration, OOP, Full-Stack Development", level: 87 },
+    {
+      icon: "🐍",
+      title: "Backend",
+      skills: ["Python", "Django", "Django REST Framework", "FastAPI"],
+    },
+    {
+      icon: "⚛",
+      title: "Frontend",
+      skills: ["React", "JavaScript", "HTML5", "CSS3"],
+    },
+    {
+      icon: "🗄",
+      title: "Database",
+      skills: ["PostgreSQL", "MongoDB", "SQLite", "MySQL"],
+    },
+    {
+      icon: "⚙",
+      title: "Tools & DevOps",
+      skills: ["Docker", "Git", "GitHub", "Linux"],
+    },
+    {
+      icon: "💡",
+      title: "Specializations",
+      skills: ["REST API Design", "ERP Integration", "OOP", "Full-Stack Development"],
+    },
   ];
 
   const sectionRef = useRef(null);
@@ -57,39 +84,38 @@ function Skills() {
           animate={isInView ? "visible" : "hidden"}
           transition={{ delay: 0.1 }}
         >
-          Technologies and tools I use daily.
+          Technologies I use to build scalable applications.
         </motion.h2>
 
         <motion.div
-          className="skills-grid"
+          className="skills-container"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {skillCategories.map((category, idx) => (
-            <motion.div key={category.title} variants={cardVariants}>
-              <TiltCard className="skill-card">
-                <h3>{category.title}</h3>
-                <p>{category.skills}</p>
-                <div className="skill-level">
-                  <div className="level-bar-bg">
-                    <motion.div
-                      className="level-bar-fill"
-                      initial={{ width: "0%" }}
-                      animate={isInView ? { width: `${category.level}%` } : { width: "0%" }}
-                      transition={{ duration: 0.9, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
-                    />
-                  </div>
-                  <motion.span
-                    className="level-text"
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ delay: 0.5 + idx * 0.1 }}
+            <motion.div
+              key={category.title}
+              className="skill-category"
+              variants={categoryVariants}
+            >
+              <div className="category-header">
+                <span className="category-icon">{category.icon}</span>
+                <h3 className="category-title">{category.title}</h3>
+              </div>
+
+              <div className="skills-chips">
+                {category.skills.map((skill, skillIdx) => (
+                  <motion.div
+                    key={skill}
+                    className="skill-chip"
+                    variants={chipVariants}
+                    custom={skillIdx}
                   >
-                    {category.level}%
-                  </motion.span>
-                </div>
-              </TiltCard>
+                    {skill}
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           ))}
         </motion.div>

@@ -1,6 +1,15 @@
-/* Hide default cursor globally */
-body, a, button, .skill-card, .project-card, input, textarea {
-  cursor: none !important;
+/* Hide default cursor globally - only on desktop */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, .skill-card, .project-card, input, textarea {
+    cursor: none !important;
+  }
+}
+
+/* Use default cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  body, a, button, .skill-card, .project-card, input, textarea {
+    cursor: auto !important;
+  }
 }
 
 .custom-cursor-dot,
@@ -10,6 +19,13 @@ body, a, button, .skill-card, .project-card, input, textarea {
   z-index: 99999;
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none;
+  }
 }
 
 .custom-cursor-dot {
