@@ -26,19 +26,18 @@ function Home() {
             Full Stack Developer
           </span>
           <h1>
-            Soorya <span className="hl">K R</span>
+            Hi, I'm<br />
+            SOORYA <span className="hl">K R</span>
           </h1>
-          <h2 className="sub-heading">Full Stack Developer</h2>
+          <h2 className="sub-heading">Python Backend Developer | Django Developer | Full Stack Developer</h2>
           <p className="lead">
-            I build modern, responsive and scalable web applications with Python/Django stack and bring ideas to life on the web.
+            Python Backend & Full Stack Developer with 1+ years of experience building scalable web applications, REST APIs, ERP integrations, and modern software solutions using Django, React, PostgreSQL, MongoDB and Docker.
           </p>
           <div className="hero-ctas">
             <a href="#projects" className="btn btn-primary">
               View My Work <span className="arrow">→</span>
             </a>
-            <a href="#contact" className="btn btn-ghost">
-              Contact Me
-            </a>
+
           </div>
           <div className="social-icons">
             <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
@@ -51,6 +50,12 @@ function Home() {
         <div className="hero-right">
           <OrbitalSystem />
         </div>
+      </div>
+      {/* Premium SVG Wave Divider */}
+      <div className="hero-wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V3.81C1132.19,26.9,1055.71,74.35,985.66,92.83Z" className="shape-fill"></path>
+        </svg>
       </div>
     </header>
   );

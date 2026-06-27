@@ -1,57 +1,33 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import TiltCard from "./TiltCard";
 import "../styles/Home.css";
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, rotateX: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 function Projects() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [visibleProjects, setVisibleProjects] = useState(new Set());
   const sectionRef = useRef(null);
-  const projectRefs = useRef([]);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    const projectObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = projectRefs.current.indexOf(entry.target);
-            if (index !== -1) {
-              setTimeout(() => {
-                setVisibleProjects((prev) => new Set([...prev, index]));
-              }, index * 150);
-            }
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    projectRefs.current.forEach((ref) => {
-      if (ref) projectObserver.observe(ref);
-    });
-
-    return () => projectObserver.disconnect();
-  }, [isVisible]);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   const projects = [
     {
@@ -75,20 +51,35 @@ function Projects() {
   ];
 
   return (
-    <section id="projects" className={`page-section scroll-fade-in ${isVisible ? "visible" : ""}`} ref={sectionRef}>
+    <section id="projects" className="page-section" ref={sectionRef}>
       <div className="section-inner">
-        <span className="section-label">Projects</span>
-        <h2>Work that shipped to production.</h2>
-        <div className="projects-grid">
+        <motion.span
+          className="section-label"
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          Projects
+        </motion.span>
+
+        <motion.h2
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          transition={{ delay: 0.1 }}
+        >
+          Work that shipped to production.
+        </motion.h2>
+
+        <motion.div
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           {projects.map((project, idx) => (
-            <div key={project.title} ref={(el) => (projectRefs.current[idx] = el)}>
-              <TiltCard
-                className={`project-card scroll-rotate-in stagger-${idx + 1} ${
-                  visibleProjects.has(idx) ? "visible" : ""
-                } ${hoveredIndex === idx ? "hovered" : ""}`}
-                onMouseEnter={() => setHoveredIndex(idx)}
-                onMouseLeave={() => setHoveredIndex(null)}
-              >
+            <motion.div key={project.title} variants={cardVariants}>
+              <TiltCard className="project-card">
                 <div className="project-icon">#{idx + 1}</div>
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
@@ -96,9 +87,9 @@ function Projects() {
                   <strong>Stack:</strong> {project.tech}
                 </p>
               </TiltCard>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
