@@ -1,0 +1,58 @@
+<svg width="400" height="240" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="carGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fb923c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#bgGrad)"/>
+
+  <!-- Road line -->
+  <rect x="0" y="180" width="400" height="4" fill="#334155"/>
+  <rect x="20" y="178" width="30" height="8" fill="#64748b"/>
+  <rect x="90" y="178" width="30" height="8" fill="#64748b"/>
+  <rect x="160" y="178" width="30" height="8" fill="#64748b"/>
+  <rect x="230" y="178" width="30" height="8" fill="#64748b"/>
+  <rect x="300" y="178" width="30" height="8" fill="#64748b"/>
+  <rect x="370" y="178" width="30" height="8" fill="#64748b"/>
+
+  <!-- Car body -->
+  <path d="M60 160 L80 120 Q90 105 110 105 L260 105 Q280 105 290 120 L310 160 Z"
+        fill="url(#carGrad)"/>
+  <path d="M110 105 L130 75 Q135 70 145 70 L225 70 Q235 70 240 75 L260 105 Z"
+        fill="url(#carGrad)" opacity="0.85"/>
+
+  <!-- Windows -->
+  <path d="M140 100 L150 80 L215 80 L225 100 Z" fill="#0f172a" opacity="0.8"/>
+  <line x1="182" y1="80" x2="182" y2="100" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Wheels -->
+  <circle cx="115" cy="162" r="20" fill="#0f172a"/>
+  <circle cx="115" cy="162" r="9" fill="#94a3b8"/>
+  <circle cx="255" cy="162" r="20" fill="#0f172a"/>
+  <circle cx="255" cy="162" r="9" fill="#94a3b8"/>
+
+  <!-- Headlight -->
+  <circle cx="300" cy="140" r="6" fill="#fef3c7"/>
+
+  <!-- Accessory icons floating around (wrench + shopping tag) -->
+  <g transform="translate(40,40)">
+    <circle cx="0" cy="0" r="18" fill="#334155"/>
+    <path d="M-7,-5 a6,6 0 1,1 8,8 L6,10 L2,6 Z" fill="#fb923c" stroke="none"/>
+  </g>
+
+  <g transform="translate(340,55)">
+    <circle cx="0" cy="0" r="18" fill="#334155"/>
+    <path d="M-6,-8 L6,-8 L8,4 L0,10 L-8,4 Z" fill="#f59e0b"/>
+    <circle cx="0" cy="-4" r="2" fill="#0f172a"/>
+  </g>
+
+  <text x="200" y="225" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="12" letter-spacing="1">
+    CAR ACCESSORIES MARKETPLACE
+  </text>
+</svg>
